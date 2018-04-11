@@ -15,7 +15,10 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.List;
+
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
@@ -99,6 +102,18 @@ public class GrafanaClient {
   public DashboardMeta createDashboard(GrafanaDashboard grafanaDashboard)
       throws GrafanaException, IOException {
     return updateDashboard(grafanaDashboard);
+  }
+
+  public DashboardCreationResponse createDashboard(String grafanaRawDashboard)
+          throws GrafanaException, IOException {
+    RequestBody body = RequestBody.create(MediaType.parse("Application/json"), grafanaRawDashboard);
+    Response<DashboardCreationResponse> response = service.postRawDashboard(apiKey, body).execute();
+
+    if (response.isSuccessful()) {
+      return response.body();
+    } else {
+      throw GrafanaException.withErrorBody(response.errorBody());
+    }
   }
 
   /**
