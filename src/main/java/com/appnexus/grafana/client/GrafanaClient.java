@@ -15,7 +15,6 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.List;
-
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
@@ -105,7 +104,7 @@ public class GrafanaClient {
   }
 
   public DashboardCreationResponse createDashboard(String grafanaRawDashboard)
-          throws GrafanaException, IOException {
+      throws GrafanaException, IOException {
     RequestBody body = RequestBody.create(MediaType.parse("Application/json"), grafanaRawDashboard);
     Response<DashboardCreationResponse> response = service.postRawDashboard(apiKey, body).execute();
 
