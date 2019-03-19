@@ -1,36 +1,39 @@
 /* Licensed under Apache-2.0 */
 package com.appnexus.grafana.client.models;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.List;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+@JsonTypeInfo(
+  use = JsonTypeInfo.Id.NAME,
+  include = JsonTypeInfo.As.EXISTING_PROPERTY,
+  property = "type",
+  visible = true
+)
+@JsonSubTypes({
+  @JsonSubTypes.Type(value = DashboardGraphPanel.class, name = "graph"),
+  @JsonSubTypes.Type(value = DashboardAlertlistPanel.class, name = "alertlist")
+})
 @Data
 @Accessors(fluent = true)
-public class DashboardPanel {
-
-  DashboardPanelAlert alert;
-  String datasource; //required for alerts
-  Boolean editable;
-  Boolean error;
-  Integer fill;
+public abstract class DashboardPanel {
+  DashboardPanelGridPos gridPos;
   Integer id;
-  Integer span;
-  String height;
-  Boolean lines;
-  Integer linewidth;
-  String nullPointMode;
-  Boolean percentage;
-  List<DashboardPanelTarget> targets;
+  List<String> links;
+  String timeFrom;
+  List<String> timeRegions;
+  String timeShift;
   String title;
-  DashboardPanelXAxis xaxis;
-  List<DashboardPanelYAxis> yaxes;
   Type type;
-  List<DashboardPanelThreshold> thresholds;
 
   public enum Type {
-    GRAPH("graph");
+    GRAPH("graph"),
+    ALERTLIST("alertlist");
+
     private final String value;
 
     Type(String s) {

@@ -8,6 +8,7 @@ import retrofit2.http.*;
 
 public interface GrafanaService {
   String GRAFANA_DASHBOARDS = "api/dashboards/db/";
+  String GRAFANA_DASHBOARDS_UID = "api/dashboards/uid/";
   String GRAFANA_NOTIFICATIONS = "api/alert-notifications/";
   String GRAFANA_ALERTS = "api/alerts/";
   String GRAFANA_SEARCH = "api/search/";
@@ -16,17 +17,27 @@ public interface GrafanaService {
   String AUTHORIZATION = "Authorization";
 
   //Dashboards
+  @Deprecated
   @GET(GRAFANA_DASHBOARDS + "{dashboard}")
-  Call<GrafanaDashboard> getDashboard(
+  Call<GrafanaDashboard> getDashboardBySlug(
       @Header(AUTHORIZATION) String authorization, @Path("dashboard") String dashboard);
+
+  @GET(GRAFANA_DASHBOARDS_UID + "{uid}")
+  Call<GrafanaDashboard> getDashboardByUid(
+      @Header(AUTHORIZATION) String authorization, @Path("uid") String uid);
 
   @POST(GRAFANA_DASHBOARDS)
   Call<DashboardMeta> postDashboard(
       @Header(AUTHORIZATION) String authorization, @Body GrafanaDashboard dashboard);
 
+  @Deprecated
   @DELETE(GRAFANA_DASHBOARDS + "{dashboard}")
-  Call<DashboardSuccessfulDelete> deleteDashboard(
+  Call<DashboardSuccessfulDelete> deleteDashboardBySlug(
       @Header(AUTHORIZATION) String authorization, @Path("dashboard") String dashboard);
+
+  @DELETE(GRAFANA_DASHBOARDS_UID + "{uid}")
+  Call<DashboardSuccessfulDelete> deleteDashboardByUid(
+      @Header(AUTHORIZATION) String authorization, @Path("uid") String uid);
 
   //Notifications
   @GET(GRAFANA_NOTIFICATIONS + "{id}")

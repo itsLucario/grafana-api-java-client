@@ -8,12 +8,22 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(fluent = true)
 public class Dashboard {
+  DashboardAnnotation annotations;
+  Boolean editable;
+  Long gnetId;
+  Integer graphTooltip;
   Long id;
-  String title;
-  List<DashboardRow> rows;
-  Integer version;
-  String timezone;
-  List<String> tags;
+  List<String> links;
+  List<DashboardPanel> panels;
+  Boolean refresh;
   Integer schemaVersion;
+  String style;
+  List<String> tags;
   DashboardTemplate templating;
+  DashboardTime time;
+  DashboardTimepicker timepicker;
+  String timezone;
+  String title;
+  String uid;
+  Integer version;
 }

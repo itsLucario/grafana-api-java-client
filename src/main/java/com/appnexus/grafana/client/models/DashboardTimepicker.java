@@ -7,6 +7,7 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(fluent = true)
-public class DashboardPanelAlertConditionQuery {
-  List<String> params;
+public class DashboardTimepicker {
+  List<String> refresh_intervals;
+  List<String> time_options;
 }

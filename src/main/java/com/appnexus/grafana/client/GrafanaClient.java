@@ -64,24 +64,50 @@ public class GrafanaClient {
   }
 
   /**
-   * Searches for an existing dashboard by name.
+   * Searches for an existing dashboard by slug.
    *
-   * @param dashboardName the name of the dashboard to search for.
+   * @param dashboardSlug the name of the dashboard to search for.
    * @return {@link GrafanaDashboard} with matching name.
    * @throws GrafanaDashboardDoesNotExistException if a dashboard with matching name does not exist.
    * @throws GrafanaException if Grafana returns an error when trying to retrieve the dashboard.
    * @throws IOException if a problem occurred talking to the server.
    */
-  public GrafanaDashboard getDashboard(String dashboardName)
+  @Deprecated
+  public GrafanaDashboard getDashboardBySlug(String dashboardSlug)
       throws GrafanaDashboardDoesNotExistException, GrafanaException, IOException {
 
-    Response<GrafanaDashboard> response = service.getDashboard(apiKey, dashboardName).execute();
+    Response<GrafanaDashboard> response =
+        service.getDashboardBySlug(apiKey, dashboardSlug).execute();
 
     if (response.isSuccessful()) {
       return response.body();
     } else if (response.code() == HTTP_NOT_FOUND) {
       throw new GrafanaDashboardDoesNotExistException(
-          "Dashboard " + dashboardName + " does not exist");
+          "Dashboard " + dashboardSlug + " does not exist");
+    } else {
+      throw GrafanaException.withErrorBody(response.errorBody());
+    }
+  }
+
+  /**
+   * Searches for an existing dashboard by uid.
+   *
+   * @param dashboardUid the name of the dashboard to search for.
+   * @return {@link GrafanaDashboard} with matching name.
+   * @throws GrafanaDashboardDoesNotExistException if a dashboard with matching name does not exist.
+   * @throws GrafanaException if Grafana returns an error when trying to retrieve the dashboard.
+   * @throws IOException if a problem occurred talking to the server.
+   */
+  public GrafanaDashboard getDashboardByUid(String dashboardUid)
+      throws GrafanaDashboardDoesNotExistException, GrafanaException, IOException {
+
+    Response<GrafanaDashboard> response = service.getDashboardByUid(apiKey, dashboardUid).execute();
+
+    if (response.isSuccessful()) {
+      return response.body();
+    } else if (response.code() == HTTP_NOT_FOUND) {
+      throw new GrafanaDashboardDoesNotExistException(
+          "Dashboard " + dashboardUid + " does not exist");
     } else {
       throw GrafanaException.withErrorBody(response.errorBody());
     }
@@ -122,27 +148,55 @@ public class GrafanaClient {
   }
 
   /**
-   * Deletes Grafana dashboard by name.
+   * Deletes Grafana dashboard by slug.
    *
-   * @param dashboardName the name of the dashboard to delete.
+   * @param dashboardSlug the name of the dashboard to delete.
    * @return The name of the deleted dashboard.
    * @throws GrafanaDashboardDoesNotExistException if the dashboard does not exist
    * @throws GrafanaDashboardCouldNotDeleteException if Grafana returns an error when trying to
    *     delete the dashboard.
    * @throws IOException if a problem occurred talking to the server.
    */
-  public String deleteDashboard(String dashboardName)
+  @Deprecated
+  public String deleteDashboardBySlug(String dashboardSlug)
       throws GrafanaDashboardDoesNotExistException, GrafanaDashboardCouldNotDeleteException,
           IOException {
 
     Response<DashboardSuccessfulDelete> response =
-        service.deleteDashboard(apiKey, dashboardName).execute();
+        service.deleteDashboardBySlug(apiKey, dashboardSlug).execute();
 
     if (response.isSuccessful()) {
       return response.body().title();
     } else if (response.code() == HTTP_NOT_FOUND) {
       throw new GrafanaDashboardDoesNotExistException(
-          "Dashboard " + dashboardName + " does not exist");
+          "Dashboard " + dashboardSlug + " does not exist");
+    } else {
+      throw GrafanaDashboardCouldNotDeleteException.withErrorBody(response.errorBody());
+    }
+  }
+
+  /**
+   * Deletes Grafana dashboard by uid.
+   *
+   * @param dashboardUid the name of the dashboard to delete.
+   * @return The name of the deleted dashboard.
+   * @throws GrafanaDashboardDoesNotExistException if the dashboard does not exist
+   * @throws GrafanaDashboardCouldNotDeleteException if Grafana returns an error when trying to
+   *     delete the dashboard.
+   * @throws IOException if a problem occurred talking to the server.
+   */
+  public String deleteDashboardByUid(String dashboardUid)
+      throws GrafanaDashboardDoesNotExistException, GrafanaDashboardCouldNotDeleteException,
+          IOException {
+
+    Response<DashboardSuccessfulDelete> response =
+        service.deleteDashboardByUid(apiKey, dashboardUid).execute();
+
+    if (response.isSuccessful()) {
+      return response.body().title();
+    } else if (response.code() == HTTP_NOT_FOUND) {
+      throw new GrafanaDashboardDoesNotExistException(
+          "Dashboard " + dashboardUid + " does not exist");
     } else {
       throw GrafanaDashboardCouldNotDeleteException.withErrorBody(response.errorBody());
     }

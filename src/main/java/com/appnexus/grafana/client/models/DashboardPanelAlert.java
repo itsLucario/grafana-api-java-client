@@ -1,6 +1,7 @@
 /* Licensed under Apache-2.0 */
 package com.appnexus.grafana.client.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.List;
 import lombok.Data;
@@ -12,8 +13,13 @@ public class DashboardPanelAlert {
 
   List<DashboardPanelAlertCondition> conditions;
   AlertState executionErrorState;
+
+  @JsonProperty("for")
+  String for_;
+
   String frequency;
   Integer handler;
+  //TODO needed????
   String message;
   String name;
   AlertState noDataState;

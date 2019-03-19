@@ -7,6 +7,6 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(fluent = true)
-public class DashboardPanelAlertConditionQuery {
-  List<String> params;
+public class DashboardAnnotation {
+  List<DashboardAnnotationList> list;
 }

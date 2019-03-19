@@ -12,4 +12,5 @@ public class DashboardPanelThreshold {
   Boolean line;
   String op;
   Long value;
+  String yaxis;
 }

@@ -12,9 +12,9 @@ import lombok.experimental.Accessors;
 public class DashboardPanelAlertCondition {
 
   DashboardPanelAlertConditionEvaluator evaluator;
+  DashboardPanelAlertConditionOperator operator;
   DashboardPanelAlertConditionQuery query;
   DashboardPanelAlertConditionReducer reducer;
-  DashboardPanelAlertConditionOperator operator;
   Type type;
 
   public enum Type {

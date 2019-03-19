@@ -2,11 +2,12 @@
 package com.appnexus.grafana.client.models;
 
 import java.util.List;
+
 import lombok.Data;
 import lombok.experimental.Accessors;
 
 @Data
 @Accessors(fluent = true)
-public class DashboardPanelAlertConditionQuery {
-  List<String> params;
+public class DatasourceJsonData {
+	List<String> keepCookies;
 }

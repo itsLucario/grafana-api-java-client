@@ -2,6 +2,7 @@
 package com.appnexus.grafana.client.models;
 
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.List;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -9,9 +10,11 @@ import lombok.experimental.Accessors;
 @Accessors(fluent = true)
 public class DashboardPanelXAxis {
 
+  String buckets;
   Mode mode;
   String name;
   Boolean show;
+  List<String> values;
 
   public enum Mode {
     TIME("time"),

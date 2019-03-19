@@ -2,28 +2,26 @@
 package com.appnexus.grafana.client.models;
 
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.List;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
 @Data
 @Accessors(fluent = true)
-public class DashboardPanelAlertConditionReducer {
+public class DashboardPanelYAxes {
 
-  List<String> params;
-  Type type;
+  Format format;
+  String label;
+  Integer logBase;
+  Integer max;
+  Integer min;
+  Boolean show;
 
-  public enum Type {
-    MIN("min"),
-    MAX("max"),
-    AVG("avg"),
-    SUM("sum"),
-    COUNT("count"),
-    LAST("last"),
-    MEDIAN("median");
+  public enum Format {
+    NONE("none"),
+    SHORT("short");
     private final String value;
 
-    Type(String s) {
+    Format(String s) {
       value = s;
     }
 
