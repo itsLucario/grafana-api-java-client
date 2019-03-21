@@ -20,7 +20,10 @@ public class DashboardPanelAlertConditionReducer {
     SUM("sum"),
     COUNT("count"),
     LAST("last"),
-    MEDIAN("median");
+    MEDIAN("median"),
+    DIFF("diff"),
+    PERCENT_DIFF("percent_diff"),
+    COUNT_NON_NULL("count_non_null");
     private final String value;
 
     Type(String s) {
