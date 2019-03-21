@@ -18,7 +18,9 @@ public class DashboardPanelAlertConditionEvaluator {
   public enum Type {
     LESS_THAN("lt"),
     GREATER_THAN("gt"),
-    OUTSIDE_RANGE("outside_range");
+    OUTSIDE_RANGE("outside_range"),
+    WITHIN_RANGE("within_range"),
+    NO_VALUE("no_value");
 
     private final String value;
 
