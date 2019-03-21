@@ -10,19 +10,14 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(fluent = true)
-public class DashboardPanelTargetSelect {
-  List<String> params;
-  Type type;
-  
+public class DashboardPanelTargetGroupBy {
+	List<String> params;
+	Type type;
+
 	public enum Type {
-		FIELD("field"),
-		BOTTOM("bottom"),
-		FIRST("first"),
-		LAST("last"),
-		MAX("max"),
-		MIN("min"),
-		PERCENTILE("percentile"),
-		TOP("top");
+		TIME("time"),
+		TAG("tag"),
+		FILL("fill");
 		private final String value;
 
 		Type(String s) {

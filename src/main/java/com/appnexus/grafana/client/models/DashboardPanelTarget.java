@@ -9,7 +9,8 @@ import lombok.experimental.Accessors;
 @Accessors(fluent = true)
 public class DashboardPanelTarget {
   String alias;
-  List<String> groupBy;
+  List<DashboardPanelTargetGroupBy> groupBy;
+  Integer limit;
   Boolean hide;
   String measurement;
   String orderByTime;
@@ -19,5 +20,7 @@ public class DashboardPanelTarget {
   String refId;
   String resultFormat;
   List<List<DashboardPanelTargetSelect>> select;
+  Integer slimit;
   List<DashboardPanelTargetTag> tags;
+  String tz;
 }
