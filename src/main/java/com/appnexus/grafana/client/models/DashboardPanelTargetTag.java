@@ -7,6 +7,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(fluent = true)
 public class DashboardPanelTargetTag {
+  String condition;
   String key;
   String operator;
   String value;
