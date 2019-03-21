@@ -13,13 +13,10 @@ public class DashboardPanelAlert {
 
   List<DashboardPanelAlertCondition> conditions;
   AlertState executionErrorState;
-
   @JsonProperty("for")
   String for_;
-
   String frequency;
   Integer handler;
-  //TODO needed????
   String message;
   String name;
   AlertState noDataState;
