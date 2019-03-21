@@ -19,5 +19,5 @@ public class DashboardPanelTarget {
   String refId;
   String resultFormat;
   List<List<DashboardPanelTargetSelect>> select;
-  List<String> tags;
+  List<DashboardPanelTargetTag> tags;
 }

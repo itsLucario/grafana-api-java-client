@@ -69,18 +69,18 @@ public class DataSourceTest {
     }
   }
 
-//  @Test
-//  public void getByNameTest() {
-//    try {
-//      DatasourceCreationResult dcr = grafanaClient.createDatasource(ds);
-//      Datasource d1 = grafanaClient.getDatasource(dsName);
-//      assertEquals(dcr.id(), d1.id());
-//    } catch (IOException e) {
-//      fail();
-//    } catch (GrafanaException e) {
-//      fail();
-//    }
-//  }
+  //  @Test
+  //  public void getByNameTest() {
+  //    try {
+  //      DatasourceCreationResult dcr = grafanaClient.createDatasource(ds);
+  //      Datasource d1 = grafanaClient.getDatasource(dsName);
+  //      assertEquals(dcr.id(), d1.id());
+  //    } catch (IOException e) {
+  //      fail();
+  //    } catch (GrafanaException e) {
+  //      fail();
+  //    }
+  //  }
 
   @Test
   public void getByIdTest() {

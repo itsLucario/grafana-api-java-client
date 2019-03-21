@@ -2,7 +2,6 @@
 package com.appnexus.grafana.client.models;
 
 import com.fasterxml.jackson.annotation.JsonValue;
-
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -23,20 +22,20 @@ public class Datasource {
   Boolean isDefault;
   DatasourceJsonData jsonData;
   Boolean readOnly;
-  
+
   public enum Type {
-	    INFLUXDB("influxdb"),
-	    TESTDATA("testdata");
+    INFLUXDB("influxdb"),
+    TESTDATA("testdata");
 
-	    private final String value;
+    private final String value;
 
-	    Type(String s) {
-	      value = s;
-	    }
+    Type(String s) {
+      value = s;
+    }
 
-	    @JsonValue
-	    public String value() {
-	      return value;
-	    }
-	  }
+    @JsonValue
+    public String value() {
+      return value;
+    }
+  }
 }
