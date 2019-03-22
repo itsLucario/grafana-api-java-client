@@ -13,14 +13,16 @@ public class DashboardPanelAlert {
 
   List<DashboardPanelAlertCondition> conditions;
   AlertState executionErrorState;
+
   @JsonProperty("for")
   String for_;
+
   String frequency;
   Integer handler;
   String message;
   String name;
   AlertState noDataState;
-  List<AlertNotification> notifications;
+  List<DashboardPanelAlertNotification> notifications;
 
   public enum AlertState {
     ALERTING("alerting"),

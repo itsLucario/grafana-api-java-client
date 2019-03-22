@@ -8,10 +8,14 @@ import lombok.experimental.Accessors;
 @Accessors(fluent = true)
 public class AlertNotification {
   Integer id;
+  Integer uid;
   String name;
   String type;
   Boolean isDefault;
-  AlertNotificationSettings settings;
+  Boolean sendReminder;
+  Boolean disableResolveMessage;
+  String frequency;
   String created;
   String updated;
+  AlertNotificationSettings settings;
 }

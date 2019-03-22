@@ -6,10 +6,6 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(fluent = true)
-public class AlertNotificationSettings {
-  String addresses;
-  String url;
-  Boolean autoResolve;
-  String httpMethod;
-  Boolean uploadImage;
+public class DashboardPanelAlertNotification {
+  String uid;
 }
