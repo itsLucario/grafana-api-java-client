@@ -7,5 +7,5 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(fluent = true)
 public class DashboardPanelLink {
-	String type;
+  String type;
 }
