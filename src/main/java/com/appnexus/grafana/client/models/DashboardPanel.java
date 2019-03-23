@@ -23,7 +23,7 @@ import lombok.experimental.Accessors;
 public abstract class DashboardPanel {
   DashboardPanelGridPos gridPos;
   Integer id;
-  List<String> links;
+  List<DashboardPanelLink> links;
   String timeFrom;
   List<String> timeRegions;
   String timeShift;
