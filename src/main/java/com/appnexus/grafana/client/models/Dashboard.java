@@ -15,7 +15,7 @@ public class Dashboard {
   Long id;
   List<String> links;
   List<DashboardPanel> panels;
-  Boolean refresh;
+  String refresh;
   Integer schemaVersion;
   String style;
   List<String> tags;
