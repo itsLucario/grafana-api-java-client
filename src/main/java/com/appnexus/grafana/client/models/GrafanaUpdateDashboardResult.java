@@ -6,6 +6,11 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(fluent = true)
-public class DashboardPanelAliasColors {
-  String placeholder;
+public class GrafanaUpdateDashboardResult {
+  Integer id;
+  String slug;
+  String status;
+  String uid;
+  String url;
+  Integer version;
 }

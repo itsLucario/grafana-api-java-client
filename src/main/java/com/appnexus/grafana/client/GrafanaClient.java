@@ -122,7 +122,7 @@ public class GrafanaClient {
    * @throws GrafanaException if Grafana returns an error when trying to create the dashboard.
    * @throws IOException if a problem occurred talking to the server.
    */
-  public DashboardMeta createDashboard(GrafanaDashboard grafanaDashboard)
+  public GrafanaUpdateDashboardResult createDashboard(GrafanaDashboard grafanaDashboard)
       throws GrafanaException, IOException {
     return updateDashboard(grafanaDashboard);
   }
@@ -135,10 +135,11 @@ public class GrafanaClient {
    * @throws GrafanaException if Grafana returns an error when trying to create the dashboard.
    * @throws IOException if a problem occurred talking to the server.
    */
-  public DashboardMeta updateDashboard(GrafanaDashboard dashboard)
+  public GrafanaUpdateDashboardResult updateDashboard(GrafanaDashboard dashboard)
       throws GrafanaException, IOException {
 
-    Response<DashboardMeta> response = service.postDashboard(apiKey, dashboard).execute();
+    Response<GrafanaUpdateDashboardResult> response =
+        service.postDashboard(apiKey, dashboard).execute();
 
     if (response.isSuccessful()) {
       return response.body();

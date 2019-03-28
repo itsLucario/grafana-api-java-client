@@ -6,6 +6,7 @@ import static org.junit.Assert.fail;
 import com.appnexus.grafana.client.models.Dashboard;
 import com.appnexus.grafana.client.models.DashboardMeta;
 import com.appnexus.grafana.client.models.GrafanaDashboard;
+import com.appnexus.grafana.client.models.GrafanaUpdateDashboardResult;
 import com.appnexus.grafana.configuration.GrafanaConfiguration;
 import com.appnexus.grafana.exceptions.GrafanaException;
 import java.io.IOException;
@@ -39,9 +40,9 @@ public class GrafanaClientDashboardIntegrationTest {
 
   //DASHBOARDS
 
-  private DashboardMeta createDashboardTest(GrafanaDashboard grafanaDashboard)
+  private GrafanaUpdateDashboardResult createDashboardTest(GrafanaDashboard grafanaDashboard)
       throws GrafanaException, IOException {
-    DashboardMeta dashboardMeta = grafanaClient.createDashboard(grafanaDashboard);
+    GrafanaUpdateDashboardResult dashboardMeta = grafanaClient.createDashboard(grafanaDashboard);
 
     assert dashboardMeta.slug().equals(grafanaDashboard.meta().slug());
 
@@ -87,7 +88,7 @@ public class GrafanaClientDashboardIntegrationTest {
         new GrafanaDashboard().meta(dashboardMeta).dashboard(dashboard);
 
     //create new dashboard
-    DashboardMeta createdDashboardMeta = createDashboardTest(grafanaDashboard);
+    GrafanaUpdateDashboardResult createdDashboardMeta = createDashboardTest(grafanaDashboard);
     //read dashboard
     getDashboardTest(createdDashboardMeta.slug());
     //delete dashboard

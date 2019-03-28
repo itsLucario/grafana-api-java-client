@@ -27,7 +27,7 @@ public interface GrafanaService {
       @Header(AUTHORIZATION) String authorization, @Path("uid") String uid);
 
   @POST(GRAFANA_DASHBOARDS)
-  Call<DashboardMeta> postDashboard(
+  Call<GrafanaUpdateDashboardResult> postDashboard(
       @Header(AUTHORIZATION) String authorization, @Body GrafanaDashboard dashboard);
 
   @Deprecated
